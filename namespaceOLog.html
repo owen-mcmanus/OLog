@@ -105,7 +105,8 @@ $(function(){initNavTree('namespaceOLog.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">OLog Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -141,6 +142,17 @@ Functions</h2></td></tr>
 <tr class="memitem:a1af015edbad8612809f416dc70a2d627" id="r_a1af015edbad8612809f416dc70a2d627"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1af015edbad8612809f416dc70a2d627">log</a> (<a class="el" href="#aa0b65633ab25398e9a30176297b3bbc0">LogLevel</a> level, const std::string &amp;message, int time=-1)</td></tr>
 <tr class="memdesc:a1af015edbad8612809f416dc70a2d627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message with a given severity level.  <br /></td></tr>
 <tr class="separator:a1af015edbad8612809f416dc70a2d627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5e6c56c513d47fd6e005afde28e512cc" id="r_a5e6c56c513d47fd6e005afde28e512cc"><td class="memItemLeft" align="right" valign="top"><a id="a5e6c56c513d47fd6e005afde28e512cc" name="a5e6c56c513d47fd6e005afde28e512cc"></a>
+constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>OL_LOG_TO_STDOUT</b> = 1 &lt;&lt; 0</td></tr>
+<tr class="memdesc:a5e6c56c513d47fd6e005afde28e512cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to enable logging to standard output. <br /></td></tr>
+<tr class="separator:a5e6c56c513d47fd6e005afde28e512cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a798e05fef35455c65ee14d62c09fbe4a" id="r_a798e05fef35455c65ee14d62c09fbe4a"><td class="memItemLeft" align="right" valign="top"><a id="a798e05fef35455c65ee14d62c09fbe4a" name="a798e05fef35455c65ee14d62c09fbe4a"></a>
+constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>OL_QUIT_ON_CRITICAL</b> = 1 &lt;&lt; 1</td></tr>
+<tr class="memdesc:a798e05fef35455c65ee14d62c09fbe4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to terminate the program on a critical log message. <br /></td></tr>
+<tr class="separator:a798e05fef35455c65ee14d62c09fbe4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A simple logging library for writing logs to a file and optionally to stdout. </p>

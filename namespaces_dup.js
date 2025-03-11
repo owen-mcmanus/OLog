@@ -11,6 +11,8 @@ var namespaces_dup =
       [ "closeLogFile", "namespaceOLog.html#aa9cb20a216c392c6d85b242cbd6f3403", null ],
       [ "log", "namespaceOLog.html#a1af015edbad8612809f416dc70a2d627", null ],
       [ "openLogFile", "namespaceOLog.html#ae8d32f2f5873d8e482fff24406533743", null ],
-      [ "setOLogExitCode", "namespaceOLog.html#adc6a65332c581848d29112a23f5fc031", null ]
+      [ "setOLogExitCode", "namespaceOLog.html#adc6a65332c581848d29112a23f5fc031", null ],
+      [ "OL_LOG_TO_STDOUT", "namespaceOLog.html#a5e6c56c513d47fd6e005afde28e512cc", null ],
+      [ "OL_QUIT_ON_CRITICAL", "namespaceOLog.html#a798e05fef35455c65ee14d62c09fbe4a", null ]
     ] ]
 ];

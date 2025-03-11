@@ -1,18 +1,15 @@
 #pragma once
-
 #include <string>
-
-/// @def OL_LOG_TO_STDOUT
-/// @brief Flag to enable logging to standard output.
-#define OL_LOG_TO_STDOUT 1<<0
-
-/// @def OL_QUIT_ON_CRITICAL
-/// @brief Flag to terminate the program on a critical log message.
-#define OL_QUIT_ON_CRITICAL 1<<1
 
 /// @namespace OLog
 /// @brief A simple logging library for writing logs to a file and optionally to stdout.
 namespace OLog {
+    /// @brief Flag to enable logging to standard output.
+    constexpr int OL_LOG_TO_STDOUT = 1 << 0;
+
+    /// @brief Flag to terminate the program on a critical log message.
+    constexpr int OL_QUIT_ON_CRITICAL = 1 << 1;
+
     /// @enum LogLevel
     /// @brief Defines various log severity levels.
     enum LogLevel {

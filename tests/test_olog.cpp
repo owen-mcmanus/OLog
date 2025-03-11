@@ -83,7 +83,7 @@ TEST(OLogTest, TestRepeatedLogging) {
 
 TEST(OLogTest, TestLogToStdout) {
     std::ostringstream log_stream;
-    OLog::openLogFile("test.log", OL_LOG_TO_STDOUT);
+    OLog::openLogFile("test.log", OLog::OL_LOG_TO_STDOUT);
 
     // Redirect std::cout to log_stream to capture stdout output
     std::streambuf* original_stream = std::cout.rdbuf();
@@ -122,7 +122,7 @@ TEST(OLogTest, LogThrowsIfFileNotOpen) {
 }
 
 TEST(OLogTest, LogExitsOnCriticalError) {
-    OLog::openLogFile("test.log", OL_QUIT_ON_CRITICAL);
+    OLog::openLogFile("test.log", OLog::OL_QUIT_ON_CRITICAL);
     EXPECT_EXIT(OLog::log(OLog::LogLevel::CRITICAL, "Critical error encountered"), ::testing::ExitedWithCode(50), "");
 
     OLog::closeLogFile();
@@ -130,7 +130,7 @@ TEST(OLogTest, LogExitsOnCriticalError) {
 }
 
 TEST(OLogTest, SetOLogExitCodeChangesExitCode) {
-    OLog::openLogFile("test.log", OL_QUIT_ON_CRITICAL);
+    OLog::openLogFile("test.log", OLog::OL_QUIT_ON_CRITICAL);
     OLog::setOLogExitCode(22);
     EXPECT_EXIT(OLog::log(OLog::LogLevel::CRITICAL, "Critical error encountered"), ::testing::ExitedWithCode(22), "");
 

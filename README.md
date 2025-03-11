@@ -40,10 +40,10 @@ To link against the library with `g++` use the `-lOLog` flag.
    Before logging any messages, open a log file by calling `openLogFile`:
 
    ```cpp
-   OLog::openLogFile("my_log.txt", OL_LOG_TO_STDOUT);
+   OLog::openLogFile("my_log.txt", OLog::OL_LOG_TO_STDOUT);
    ```
 
-    - `OL_LOG_TO_STDOUT`: Optionally enables logging to standard output.
+    - `OLog::OL_LOG_TO_STDOUT`: Optionally enables logging to standard output.
 
 3. **Logging Messages**:
 
@@ -64,7 +64,7 @@ To link against the library with `g++` use the `-lOLog` flag.
 
 5. **Critical Error Handling**:
 
-   If `OL_QUIT_ON_CRITICAL` is enabled, the program will terminate if a critical error is logged:
+   If `OLog::OL_QUIT_ON_CRITICAL` is enabled, the program will terminate if a critical error is logged:
 
    ```cpp
    OLog::log(OLog::LogLevel::CRITICAL, "Critical error occurred!");
@@ -86,7 +86,7 @@ To link against the library with `g++` use the `-lOLog` flag.
 int main() {
     try {
         // Open log file with options to log to stdout
-        OLog::openLogFile("app_log.txt", OL_LOG_TO_STDOUT);
+        OLog::openLogFile("app_log.txt", OLog::OL_LOG_TO_STDOUT);
 
         // Log various messages
         OLog::log(OLog::LogLevel::INFO, "Application started.");

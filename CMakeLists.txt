@@ -10,9 +10,10 @@ set(SOURCES
     src/olog.cpp
 )
 
-add_library(OLog ${SOURCES})
+add_library(OLog STATIC ${SOURCES})
 
-target_include_directories(OLog PRIVATE include)
+install(TARGETS OLog DESTINATION /usr/local/lib)
+install(DIRECTORY include/ DESTINATION /usr/local/include)
 
 enable_testing()
 add_subdirectory(tests)

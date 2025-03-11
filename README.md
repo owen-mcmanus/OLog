@@ -11,6 +11,9 @@ OLog is a simple logging library designed to write logs to a file and optionally
 - **Critical Error Handling**: Optionally terminates the program when a critical error is logged.
 - **Timestamping**: Optionally logs the timestamp with each message.
 
+## Documentation
+Full documentation can be found here: https://owen-mcmanus.github.io/OLog/namespaceOLog.html
+
 ## Installation
 Olog can be installed with cmake.  
 To compile on Unix based systems run:
@@ -18,21 +21,18 @@ To compile on Unix based systems run:
 - `cd build`
 - `cmake ..`
 - `make`
-### Prerequisites
+- `make install`
 
-- A C++11 compatible compiler or higher.
-- The library can be used directly in C++ projects by including the header file `olohg.h`.
+## Usage
 
-### Usage
-
-To use this logging library in your project, include the `olohg.h` header file and link against the source files.
+To use this library in your project, include the `olog.h` header file and link against the library.
+To link against the library with `g++` use the `-lOLog` flag.
 
 1. **Include the Header**:
 
-   Include the `olohg.h` file in your C++ project:
 
    ```cpp
-   #include "olohg.h"
+   #include <olog.h>
    ```
 
 2. **Opening a Log File**:
@@ -79,7 +79,9 @@ To use this logging library in your project, include the `olohg.h` header file a
 ### Example
 
 ```cpp
-#include "olohg.h"
+#include <iostream>
+#include <exception>
+#include <olog.h>
 
 int main() {
     try {
@@ -104,11 +106,10 @@ int main() {
 }
 ```
 
-### Contributing
+## Contributing
 
 Contributions are welcome! To contribute to this project, fork the repository, make your changes, and submit a pull request.
 
-### License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```

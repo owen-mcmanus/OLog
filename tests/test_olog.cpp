@@ -1,6 +1,8 @@
-#include <gtest/gtest.h>
-#include <fstream>
 #include "../include/olog.h"
+#include <fstream>
+#include <gtest/gtest.h>
+#include <thread>
+#include <vector>
 
 TEST(OLogTest, TestBasicLogging) {
     OLog::openLogFile("test.log");
@@ -123,7 +125,9 @@ TEST(OLogTest, LogThrowsIfFileNotOpen) {
 
 TEST(OLogTest, LogExitsOnCriticalError) {
     OLog::openLogFile("test.log", OLog::OL_QUIT_ON_CRITICAL);
-    EXPECT_EXIT(OLog::log(OLog::LogLevel::CRITICAL, "Critical error encountered"), ::testing::ExitedWithCode(50), "");
+    EXPECT_EXIT(
+        OLog::log(OLog::LogLevel::CRITICAL, "Critical error encountered"),
+        ::testing::ExitedWithCode(50), "");
 
     OLog::closeLogFile();
     std::remove("test.log");
@@ -132,8 +136,44 @@ TEST(OLogTest, LogExitsOnCriticalError) {
 TEST(OLogTest, SetOLogExitCodeChangesExitCode) {
     OLog::openLogFile("test.log", OLog::OL_QUIT_ON_CRITICAL);
     OLog::setOLogExitCode(22);
-    EXPECT_EXIT(OLog::log(OLog::LogLevel::CRITICAL, "Critical error encountered"), ::testing::ExitedWithCode(22), "");
+    EXPECT_EXIT(
+        OLog::log(OLog::LogLevel::CRITICAL, "Critical error encountered"),
+        ::testing::ExitedWithCode(22), "");
 
     OLog::closeLogFile();
     std::remove("test.log");
+}
+
+TEST(OLogTest, Mutex) {
+    const int num_threads = 10;
+    const int messages_per_thread = 100;
+
+    OLog::openLogFile("test.log");
+
+    std::vector<std::thread> threads;
+    threads.reserve(num_threads);
+
+    for (int i = 0; i < num_threads; ++i) {
+        threads.emplace_back([i, messages_per_thread]() {
+            for (int j = 0; j < messages_per_thread; ++j) {
+                OLog::log(
+                    OLog::LogLevel::INFO,
+                    "Thread " + std::to_string(i) + " msg " + std::to_string(j), -1);
+            }
+        });
+    }
+
+    for (auto& t : threads) {
+        t.join();
+    }
+
+    OLog::closeLogFile();
+
+    std::ifstream file("test.log");
+    int expected_lines = num_threads * messages_per_thread + 1;
+    int actual_lines =
+        std::count(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>(), '\n');
+    EXPECT_EQ(expected_lines, actual_lines);
+
+    // std::remove("test.log");
 }

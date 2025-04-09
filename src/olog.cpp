@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <mutex>
 #include <sstream>
 
 namespace OLog {
@@ -28,7 +29,11 @@ void openLogFile(const std::string& file_name, const int _flags) {
 
 void closeLogFile() { log_file.close(); }
 
+static std::mutex log_mutex;
+
 void log(const LogLevel level, const std::string& message, const int time) {
+    std::lock_guard<std::mutex> lock(log_mutex);
+
     if (!log_file.is_open()) {
         throw std::runtime_error("Log file not open");
     }

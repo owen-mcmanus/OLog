@@ -1,19 +1,36 @@
 cmake_minimum_required(VERSION 3.25)
-project(OLog)
+project(OLog VERSION 1.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-include_directories(include)
+if (NOT TARGET OLog)
+    add_library(OLog STATIC src/olog.cpp)
 
-set(SOURCES
-    src/olog.cpp
-)
+    target_include_directories(OLog PUBLIC
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+            $<INSTALL_INTERFACE:include>
+    )
 
-add_library(OLog STATIC ${SOURCES})
+    install(TARGETS OLog
+            EXPORT OLogTargets
+            ARCHIVE DESTINATION lib
+            LIBRARY DESTINATION lib
+            RUNTIME DESTINATION bin
+            INCLUDES DESTINATION include
+    )
 
-install(TARGETS OLog DESTINATION /usr/local/lib)
-install(DIRECTORY include/ DESTINATION /usr/local/include)
+    install(DIRECTORY include/ DESTINATION include)
 
-enable_testing()
-add_subdirectory(tests)
+    install(EXPORT OLogTargets
+            FILE OLogTargets.cmake
+            NAMESPACE OLog::
+            DESTINATION lib/cmake/OLog
+    )
+endif()
+
+
+if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+    enable_testing()
+    add_subdirectory(tests)
+endif()

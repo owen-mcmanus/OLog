@@ -140,7 +140,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:aa9cb20a216c392c6d85b242cbd6f3403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the currently opened log file.  <br /></td></tr>
 <tr class="separator:aa9cb20a216c392c6d85b242cbd6f3403"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1af015edbad8612809f416dc70a2d627" id="r_a1af015edbad8612809f416dc70a2d627"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1af015edbad8612809f416dc70a2d627">log</a> (<a class="el" href="#aa0b65633ab25398e9a30176297b3bbc0">LogLevel</a> level, const std::string &amp;message, int time=-1)</td></tr>
-<tr class="memdesc:a1af015edbad8612809f416dc70a2d627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message with a given severity level.  <br /></td></tr>
+<tr class="memdesc:a1af015edbad8612809f416dc70a2d627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message with a given severity level (thread-safe).  <br /></td></tr>
 <tr class="separator:a1af015edbad8612809f416dc70a2d627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -230,7 +230,7 @@ constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>OL_QUIT_ON_C
       </table>
 </div><div class="memdoc">
 
-<p>Logs a message with a given severity level. </p>
+<p>Logs a message with a given severity level (thread-safe). </p>
 <p>Logs messages to the file and optionally to <code>stdout</code>, based on the flags set. If logging a <code>CRITICAL</code> error and the <code>OL_QUIT_ON_CRITICAL</code> flag is set, the program will terminate with the specified exit code.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -273,7 +273,7 @@ constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>OL_QUIT_ON_C
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_name</td><td>The name of the log file. </td></tr>
-    <tr><td class="paramname">_flags</td><td>Flags controlling logging behavior (e.g., <code>OL_LOG_TO_STDOUT</code>).</td></tr>
+    <tr><td class="paramname">_flags</td><td>(Optional) Flags controlling logging behavior (e.g., <code>OL_LOG_TO_STDOUT</code>).</td></tr>
   </table>
   </dd>
 </dl>

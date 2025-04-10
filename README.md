@@ -5,7 +5,7 @@ OLog is a simple logging library designed to write logs to a file and optionally
 
 ## Features
 
-- **Log to File**: Logs messages to a specified file.
+- **Log to File**: Atomic logging of messages to a specified file.
 - **Log Levels**: Supports multiple log levels: DEBUG, INFO, WARNING, ERROR, and CRITICAL.
 - **Log to Console**: Optionally logs to standard output (stdout) based on flags.
 - **Critical Error Handling**: Optionally terminates the program when a critical error is logged.

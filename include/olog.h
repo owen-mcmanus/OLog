@@ -28,7 +28,7 @@ enum LogLevel {
  * A new session header is written at the beginning.
  *
  * @param file_name The name of the log file.
- * @param _flags Flags controlling logging behavior (e.g., `OL_LOG_TO_STDOUT`).
+ * @param _flags (Optional) Flags controlling logging behavior (e.g., `OL_LOG_TO_STDOUT`).
  *
  * @throws std::logic_error If the log file is already open. The user must close the
  * existing log file before opening a new one.
@@ -46,7 +46,7 @@ void openLogFile(const std::string& file_name, int _flags = 0);
 void closeLogFile();
 
 /**
- * @brief Logs a message with a given severity level.
+ * @brief Logs a message with a given severity level (thread-safe).
  *
  * Logs messages to the file and optionally to `stdout`, based on the flags set.
  * If logging a `CRITICAL` error and the `OL_QUIT_ON_CRITICAL` flag is set, the
